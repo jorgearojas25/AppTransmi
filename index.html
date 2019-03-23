@@ -25,11 +25,13 @@
     $(function () {
 
       // Banner sitios interes
-      $("#slider2").responsiveSlides({
+     $("#slider2").responsiveSlides({
         auto: false,
         pager: true,
-        speed: 300,
-        maxwidth: 540
+        nav: true,
+        speed: 500,
+        maxwidth: 800,
+        namespace: "transparent-btns"
       });
 
       // Banner Noticias
@@ -39,12 +41,6 @@
         nav: true,
         speed: 500,
         namespace: "callbacks",
-        before: function () {
-          $('.events').append("<li>before event fired.</li>");
-        },
-        after: function () {
-          $('.events').append("<li>after event fired.</li>");
-        }
       });
 
     });
@@ -59,11 +55,11 @@
     </header>
     <nav id="menu">
      <ul>
-         <li><a href="index.html" title="Inicio">INICIO</a></li>
-         <li><a href="html/novedades.html" title="Novedades/servicios">NOVEDADES/SERVICIOS</a> </li>
-         <li><a href="html/nosotros.html" title="sobre nosotros">SOBRE NOSOTROS</a></li>
-         <li><a href="html/plan.html" title="planee su ruta">PLANEE SU RUTA</a></li>
-         <li><a href="html/contacto.html" title="contacto">CONTACTO</a></li>
+         <li><a class="link" href="index.html" title="Inicio">INICIO</a></li>
+         <li><a class="link" href="html/novedades.html" title="Novedades/servicios">NOVEDADES/SERVICIOS</a> </li>
+         <li><a class="link" href="html/nosotros.html" title="sobre nosotros">SOBRE NOSOTROS</a></li>
+         <li><a class="link" href="html/plan.html" title="planee su ruta">PLANEE SU RUTA</a></li>
+         <li><a class="link" href="html/contacto.html" title="contacto">CONTACTO</a></li>
        </ul>
     </nav>
     <!--Banner dinamico para mostrar las Noticias-->
