@@ -38,6 +38,7 @@
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   margin: 0 auto;
+ 
   }
 
 .rslides_tabs {
@@ -133,6 +134,7 @@ h3 {
     position: relative;
     float: left;
     width: 100%;
+
     }
 
 .callbacks {
