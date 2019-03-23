@@ -83,7 +83,7 @@ h3 {
 p{
     display: inline-block;
 }
-a {
+a.link {
     text-decoration: none;
     color: #C60000;
 }
