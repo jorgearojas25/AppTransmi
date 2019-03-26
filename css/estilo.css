@@ -131,4 +131,47 @@ div {
 .btontrooncales{
     width: 200px;
     margin-bottom: 10px;
+    border-radius: 10px;
 }
+#caracas{
+    background-color: #00358b;
+}
+#norte{
+    background-color:#97b732;
+}
+#suba{
+    background-color: #e1b940;
+}
+
+#ochet{
+    background-color:#8479a3;
+}
+#nqsc{
+    background-color:#8b6512;
+}
+#america{
+    background-color: #990a0c;
+}
+#nqssu{
+    background-color: #48a7e1;
+}
+#caracassu{
+    background-color: #d98c00;
+}
+#tunal{
+    background-color: #d98c00;
+}
+
+#eje{
+    background-color:#ddb8bf;
+}
+#veits{
+    background-color:#cdaf7b;
+}
+#diez{
+    background-color:#03939C;
+}
+#museo{
+     background-color:#8c0178;
+}
+
