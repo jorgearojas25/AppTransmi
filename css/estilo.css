@@ -176,3 +176,86 @@ button {
 #museo{
      background-color:#8c0178;
 }
+.bloque1{
+    display: inline-block;
+    padding: 40px;
+
+}
+.bloque2{
+    display: inline-block;
+     padding: 40px;
+     vertical-align: top;
+}
+.bloque3{
+     display: inline-block;
+     padding: 40px;
+     vertical-align: top;
+}
+.bloque4{
+     display: inline-block;
+     padding: 40px;
+     vertical-align: top;
+}
+.bloque1 ul.u{
+    border-left: 2px solid #CCCCCC;
+    list-style: none;
+    padding: 2px;
+    
+}
+.bloque2 ul.u{
+    border-left: 2px solid #CCCCCC;
+    list-style: none;
+    
+}
+.bloque3 ul.u {
+    border-left: 2px solid #CCCCCC;
+    list-style: none;
+    
+}
+
+.bloque4 ul.u {
+    border-left: 2px solid #CCCCCC;
+    list-style: none;
+    
+}
+
+input[id^="spoiler"]{
+ display: inline-block;
+ 
+}
+input[id^="spoiler"] + label {
+  display: block;
+  width: 200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  background:#C60000;
+  color: #fff;
+  text-align: center;
+  font-size: 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all .6s;
+}
+input[id^="spoiler"]:checked + label {
+  color: #333;
+  background: #ccc;
+}
+input[id^="spoiler"] ~ .spoiler {
+  width: 60%;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  margin: 10px auto 0; 
+  padding: 10px; 
+  background: #eee;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: all .6s;
+}
+input[id^="spoiler"]:checked + label + .spoiler{
+  height: auto;
+  opacity: 1;
+  padding: 10px;
+}
+
+
