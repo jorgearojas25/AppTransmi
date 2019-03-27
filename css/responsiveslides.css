@@ -4,10 +4,24 @@
   position: relative;
   list-style: none;
   overflow: hidden;
-  width: 100%;
+  width: 1000px;
   padding: 0;
   margin: 0;
+  border: 1px solid black;
+  background-image: cover;
 }
+
+/* .rslides2 {
+  position: relative;
+  list-style: none;
+  overflow: hidden;
+  width: 1000px;
+  padding: 20px;
+  margin: 0;
+  border: 1px solid black;
+  height: 200px;
+  
+} */
 
 .rslides li {
   -webkit-backface-visibility: hidden;
