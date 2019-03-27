@@ -45,7 +45,7 @@ marginTop : 15,
 marginBottom : 15,
 zIndexCounter : 1001, // adjust to other absolutely positioned elements
 loadingOpacity : 0.75,
-allowMultipleInstances: true,
+allowMultipleInstances: false,
 numberOfImagesToPreload : 5,
 outlineWhileAnimating : 2, // 0 = never, 1 = always, 2 = HTML only 
 outlineStartOffset : 3, // ends at 10

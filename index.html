@@ -7,33 +7,86 @@
   <meta name="keywords" content="Transmilenio, Web, Troncal, Campamento">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>TransMe | Home</title>
-  <link rel="stylesheet" href="css/estilo.css">
-  <script type="text/javascript" src="js/highslide-with-html.js"></script>
   <link rel="stylesheet" type="text/css" href="css/highslide.css" />
   <link rel="stylesheet" href="css/responsiveslides.css">
+  <link rel="stylesheet" type="text/css" href="mapa/highslide.css" />
+  <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style>
+  .mySlides {display:none;}
+  </style>
+  <link href="css/estiloslideinteres.css" rel="stylesheet" type="text/css" media="screen" />
+  
+  <link rel="stylesheet" href="css/estilo.css">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/highslide-with-html.js"></script>
   <script src="js/responsiveslides.min.js"></script>
+  <script type="text/javascript" src="mapa/highslide-full.js"></script>
+  <script src="https://www.w3schools.com/lib/w3.js"></script>
   <script type="text/javascript">
     hs.graphicsDir = 'graphics/';
     hs.outlineType = 'rounded-white';
     hs.fadeInOut = true;
     hs.headingEval = 'this.a.title';
   </script>
-  <script type="text/javascript" src="mapa/highslide-full.js"></script>
-  <link rel="stylesheet" type="text/css" href="mapa/highslide.css" />
-  <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+  <script type="text/javascript">
+    $(document).ready(function(){
+      var currentPosition = 0;
+      var slideWidth = 900; 
+      var slides = $('.slide');
+      var numberOfSlides = slides.length;
+    
+      // Remove scrollbar in JS
+      $('#slidesContainer').css('overflow', 'hidden');
+    
+      // Wrap all .slides with #slideInner div
+      slides
+        .wrapAll('<div id="slideInner"></div>')
+        // Float left to display horizontally, readjust .slides width
+      .css({
+          'float' : 'left',
+          'width' : slideWidth
+        });
+    
+      // Set #slideInner width equal to total width of all slides
+      $('#slideInner').css('width', slideWidth * numberOfSlides);
+    
+      // Insert controls in the DOM
+      $('#slideshow')
+        .prepend('<span class="control" id="leftControl"> Clicking moves left</span>')
+        .append('<span class="control" id="rightControl"> Clicking moves right</span>');
+    
+      // Hide left arrow control on first load
+      manageControls(currentPosition);
+    
+      // Create event listeners for .controls clicks
+      $('.control')
+        .bind('click', function(){
+        // Determine new position
+      currentPosition = ($(this).attr('id')=='rightControl') ? currentPosition+1 : currentPosition-1;
+        
+      // Hide / show controls
+        manageControls(currentPosition);
+        // Move slideInner using margin-left
+        $('#slideInner').animate({
+          'marginLeft' : slideWidth*(-currentPosition)
+        });
+      });
+    
+      // manageControls: Hides and Shows controls depending on currentPosition
+      function manageControls(position){
+        // Hide left arrow if position is first slide
+      if(position==0){ $('#leftControl').hide() } else{ $('#leftControl').show() }
+      // Hide right arrow if position is last slide
+        if(position==numberOfSlides-1){ $('#rightControl').hide() } else{ $('#rightControl').show() }
+      }	
+    });
+    </script>
+
+    <!-- termina script -->
   <script>
     $(function () {
-
-      // Banner sitios interes
-      $("#slider2").responsiveSlides({
-        auto: false,
-        pager: true,
-        nav: true,
-        speed: 500,
-        maxwidth: 800,
-        namespace: "transparent-btns"
-      });
 
       // Banner Noticias
       $("#slider4").responsiveSlides({
@@ -48,8 +101,7 @@
   </script>
 </head>
 
-<body>
-
+<body onclick="hs.close(all)">
   <div id="agrupar">
     <header id="cabecera">
       <a href="index.html"> <img class="logo" src="images/logo.png"></a>
@@ -63,24 +115,74 @@
         <li><a class="link" href="html/contacto.html" title="contacto">CONTACTO</a></li>
       </ul>
     </nav>
+
+    <!--Prueba de un segundo banner de interes-->
+    <div class="w3-content w3-display-container">
+
+        <div class="w3-display-container mySlides">
+          <img src="images/bannerNoticias/1.jpg" alt="Imagen alusiva a la noticia 1" style="width:100%">
+          <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
+              <a href="https://www.transmilenio.gov.co/TransMiCable/publicaciones/151164/leydi-rangel-teje-una-linda-historia-junto-a-su-esposo/"> Leydi Rangel teje una linda historia junto a su esposo</a>          </div>
+        </div>
+        
+        <div class="w3-display-container mySlides">
+          <img src="images/bannerNoticias/2.jpg" alt="Imagen alusiva a la noticia 2" style="width:100%">
+          <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
+              <a href="https://www.transmilenio.gov.co/publicaciones/151163/transmilenio-refuerza-su-equipo-para-atencion-de-conflictos-e-informacion-a-usuarios/"> TransMilenio refuerza su equipo para atención de conflictos e información a usuarios
+              </a>          </div>
+        </div>
+        
+        <div class="w3-display-container mySlides">
+          <img src="images/bannerNoticias/3.jpg" alt="Imagen alusiva a la noticia 3" style="width:100%">
+          <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
+              <a href="https://www.transmilenio.gov.co/publicaciones/151160/hack36movil-iniciativa-para-jovenes-que-quieren-aportar-con-la-seguridad-y-cultura-en-transmilenio/"> Empieza Hack36Móvil, iniciativa para jóvenes que quieren aportar con la seguridad y convivencia en TransMilenio
+              </a>         </div>
+        </div>
+        
+        <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
+        <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
+        
+        </div>
+        
+        <script>
+        var slideIndex = 1;
+        showDivs(slideIndex);
+        
+        function plusDivs(n) {
+          showDivs(slideIndex += n);
+        }
+        
+        function showDivs(n) {
+          var i;
+          var x = document.getElementsByClassName("mySlides");
+          if (n > x.length) {slideIndex = 1}
+          if (n < 1) {slideIndex = x.length}
+          for (i = 0; i < x.length; i++) {
+             x[i].style.display = "none";  
+          }
+          x[slideIndex-1].style.display = "block";  
+        }
+        </script>
     
     <!--Banner dinamico para mostrar las Noticias-->
-    <div class="callbacks_container">
+    <!-- <div class="callbacks_container">
       <ul class="rslides" id="slider4">
         <li>
           <img src="images/bannerNoticias/1.jpg" alt="Imagen alusiva a la noticia 1">
-          <p class="caption"><a href="html/novedades.html"> Biarticulado</a></p>
+          <p class="caption"><a href="https://www.transmilenio.gov.co/TransMiCable/publicaciones/151164/leydi-rangel-teje-una-linda-historia-junto-a-su-esposo/"> Leydi Rangel teje una linda historia junto a su esposo</a></p>
         </li>
         <li>
           <img src="images/bannerNoticias/2.jpg" alt="Imagen alusiva a la noticia 2">
-          <p class="caption"><a href="html/novedades.html"> Transmilenio</a></p>
+          <p class="caption"><a href="https://www.transmilenio.gov.co/publicaciones/151163/transmilenio-refuerza-su-equipo-para-atencion-de-conflictos-e-informacion-a-usuarios/"> TransMilenio refuerza su equipo para atención de conflictos e información a usuarios
+          </a></p>
         </li>
         <li>
           <img src="images/bannerNoticias/3.jpg" alt="Imagen alusiva a la noticia 3">
-          <p class="caption"><a href="html/novedades.html"> Nuevos modelos</a></p>
+          <p class="caption"><a href="https://www.transmilenio.gov.co/publicaciones/151160/hack36movil-iniciativa-para-jovenes-que-quieren-aportar-con-la-seguridad-y-cultura-en-transmilenio/"> Empieza Hack36Móvil, iniciativa para jóvenes que quieren aportar con la seguridad y convivencia en TransMilenio
+          </a></p>
         </li>
       </ul>
-    </div>
+    </div> -->
 
     <section id="seccion">
       <article>
@@ -136,12 +238,6 @@
 
       <div class="highslide-html-content" id="troncalCaracas">
 
-        <div class="highslide-header">
-          <ul>
-            <li class="highslide-move"><a href="#" onclick="return false">Mover</a></li>
-            <li class="highslide-close"><a href="#" onclick="return hs.close(this)">Cerrar</a></li>
-          </ul>
-        </div>
 
         <div class="highslide-body">
           <h2>A| Caracas</h2>
@@ -175,12 +271,6 @@
 
       <div class="highslide-html-content" id="troncalnorte">
 
-        <div class="highslide-header">
-          <ul>
-            <li class="highslide-move"><a href="#" onclick="return false">Mover</a></li>
-            <li class="highslide-close"><a href="#" onclick="return hs.close(this)">Cerrar</a></li>
-          </ul>
-        </div>
 
         <div class="highslide-body">
           <h2>B| Norte </h2>
@@ -217,12 +307,6 @@
 
       <div class="highslide-html-content" id="troncalSuba">
 
-        <div class="highslide-header">
-          <ul>
-            <li class="highslide-move"><a href="#" onclick="return false">Mover</a></li>
-            <li class="highslide-close"><a href="#" onclick="return hs.close(this)">Cerrar</a></li>
-          </ul>
-        </div>
 
         <div class="highslide-body">
           <h2>C| Suba</h2>
@@ -256,12 +340,7 @@
 
       <div class="highslide-html-content" id="troncal80">
 
-        <div class="highslide-header">
-          <ul>
-            <li class="highslide-move"><a href="#" onclick="return false">Mover</a></li>
-            <li class="highslide-close"><a href="#" onclick="return hs.close(this)">Cerrar</a></li>
-          </ul>
-        </div>
+        
 
         <div class="highslide-body">
           <h2>D| Portal 80</h2>
@@ -294,12 +373,7 @@
 
       <div class="highslide-html-content" id="troncalNQS">
 
-        <div class="highslide-header">
-          <ul>
-            <li class="highslide-move"><a href="#" onclick="return false">Mover</a></li>
-            <li class="highslide-close"><a href="#" onclick="return hs.close(this)">Cerrar</a></li>
-          </ul>
-        </div>
+        
 
         <div class="highslide-body">
           <h2>E| NQS Central</h2>
@@ -332,13 +406,7 @@
 
       <div class="highslide-html-content" id="troncalAmericas">
 
-        <div class="highslide-header">
-          <ul>
-            <li class="highslide-move"><a href="#" onclick="return false">Mover</a></li>
-            <li class="highslide-close"><a href="#" onclick="return hs.close(this)">Cerrar</a></li>
-          </ul>
-        </div>
-
+       
         <div class="highslide-body">
           <h2>F| Troncal Americas</h2>
           <img width="370" src="images/Americas.jpg" alt="gráfica alusiva portal Americas " />
@@ -370,13 +438,7 @@
 
       <div class="highslide-html-content" id="troncalNQSsur">
 
-        <div class="highslide-header">
-          <ul>
-            <li class="highslide-move"><a href="#" onclick="return false">Mover</a></li>
-            <li class="highslide-close"><a href="#" onclick="return hs.close(this)">Cerrar</a></li>
-          </ul>
-        </div>
-
+       
         <div class="highslide-body">
           <h2>G| NQS sur</h2>
           <img width="370" src="images/NQSSur.jpg" alt="gráfica alusiva troncal NQS sur " />
@@ -411,13 +473,7 @@
 
       <div class="highslide-html-content" id="troncalCaracasSur">
 
-        <div class="highslide-header">
-          <ul>
-            <li class="highslide-move"><a href="#" onclick="return false">Mover</a></li>
-            <li class="highslide-close"><a href="#" onclick="return hs.close(this)">Cerrar</a></li>
-          </ul>
-        </div>
-
+        
         <div class="highslide-body">
           <h2>H| Caracas Sur</h2>
           <img width="370" src="images/CaracasSur.jpg" alt="gráfica alusiva troncal caracas sur " />
@@ -449,12 +505,7 @@
 
       <div class="highslide-html-content" id="troncalTunal">
 
-        <div class="highslide-header">
-          <ul>
-            <li class="highslide-move"><a href="#" onclick="return false">Mover</a></li>
-            <li class="highslide-close"><a href="#" onclick="return hs.close(this)">Cerrar</a></li>
-          </ul>
-        </div>
+
 
         <div class="highslide-body">
           <h2>H| Caracas sur Tunal</h2>
@@ -477,13 +528,7 @@
 
       <div class="highslide-html-content" id="troncalEje">
 
-        <div class="highslide-header">
-          <ul>
-            <li class="highslide-move"><a href="#" onclick="return false">Mover</a></li>
-            <li class="highslide-close"><a href="#" onclick="return hs.close(this)">Cerrar</a></li>
-          </ul>
-        </div>
-
+        
         <div class="highslide-body">
           <h2>J| Eje Ambiental</h2>
           <img width="370" src="images/EjeAmbiental.jpg" alt="gráfica alusiva troncal eje Ambiental " />
@@ -505,12 +550,7 @@
 
       <div class="highslide-html-content" id="troncal26">
 
-        <div class="highslide-header">
-          <ul>
-            <li class="highslide-move"><a href="#" onclick="return false">Mover</a></li>
-            <li class="highslide-close"><a href="#" onclick="return hs.close(this)">Cerrar</a></li>
-          </ul>
-        </div>
+        
 
         <div class="highslide-body">
           <h2>K| Calle 26</h2>
@@ -543,13 +583,6 @@
 
       <div class="highslide-html-content" id="troncal10">
 
-        <div class="highslide-header">
-          <ul>
-            <li class="highslide-move"><a href="#" onclick="return false">Mover</a></li>
-            <li class="highslide-close"><a href="#" onclick="return hs.close(this)">Cerrar</a></li>
-          </ul>
-        </div>
-
         <div class="highslide-body">
           <h2>L| Carrera10</h2>
           <img width="370" src="images/CarreraDecima.jpg" alt="gráfica alusiva troncal Carrera 10 " />
@@ -578,12 +611,6 @@
 
       <div class="highslide-html-content" id="troncalMuseo">
 
-        <div class="highslide-header">
-          <ul>
-            <li class="highslide-move"><a href="#" onclick="return false">Mover</a></li>
-            <li class="highslide-close"><a href="#" onclick="return hs.close(this)">Cerrar</a></li>
-          </ul>
-        </div>
 
         <div class="highslide-body">
           <h2>M| Carrera Septima</h2>
@@ -598,21 +625,43 @@
         </div>
       </div>
 
+      <!-- banner de interes-->
+         		 <!-- Slideshow HTML -->
+              <div id="slideshow">
+                    
+                  <div id="slidesContainer">
+                  <div class="slide">
+                    <ul>
+                        <li><a href="#"><img src="images/logosSlider/logoejemplo1.jpg" width="161" height="126" /></a></li>
+                        <li><a href="#"><img src="images/logosSlider/logoejemplo2.jpg" width="161" height="126" /></a></a></li>
+                        <li><a href="#"><img src="images/logosSlider/logoejemplo3.jpg" width="161" height="126" /></a></a></li>
+                        <li><a href="#"><img src="images/logosSlider/logoejemplo4.jpg" width="161" height="126" /></a></a></li>
+                    </ul>
+                  </div>
+                  <div class="slide">
+                       <ul>
+                        <li><a href="#"><img src="images/logosSlider/logoejemplo5.jpg" width="161" height="126" /></a></li>
+                        <li><a href="#"><img src="images/logosSlider/logoejemplo6.jpg" width="161" height="126" /></a></a></li>
+                        <li><a href="#"><img src="images/logosSlider/logoejemplo7.jpg" width="161" height="126" /></a></a></li>
+                        <li><a href="#"><img src="images/logosSlider/logoejemplo8.jpg" width="161" height="126" /></a></a></li>
+                    </ul>
+                  </div>
+                  <div class="slide">
+                         <ul>
+                        <li><a href="#"><img src="images/logosSlider/logoejemplo1.jpg" width="161" height="126" /></a></li>
+                        <li><a href="#"><img src="images/logosSlider/logoejemplo2.jpg" width="161" height="126" /></a></a></li>
+                        <li><a href="#"><img src="images/logosSlider/logoejemplo3.jpg" width="161" height="126" /></a></a></li>
+                        <li><a href="#"><img src="images/logosSlider/logoejemplo4.jpg" width="161" height="126" /></a></a></li>
+                    </ul>
+                  </div>
+                </div><!--fin slidesContainer -->
+            </div><!-- Slideshow HTML -->
 
-  </div>
-
+  </div>    
   </aside>
   </div>
 
-  <!-- banner de interes-->
-  <div class="rslides_container">
-    <ul class="rslides" id="slider2">
-      <li><img src="images/bannerInteres/interes1.jpg" alt=""></li>
-      <li><img src="images/bannerInteres/interes2.jpg" alt=""></li>
-      <li><img src="images/bannerInteres/3.jpg" alt=""></li>
-    </ul>
-  </div>
-
+  
   <footer id="pie">
     <ul class="map">
       <li>
@@ -628,9 +677,10 @@
       Carrera 28 #66, Código Postal 1110101 Bogotá, Colombia | info@transmi.com <br>
       Conozca nuestro Aviso de Privacidad - Políticas de privacidad y de tratamiento de datos <br>
     </p>
-    <a href="http://www.facebook.com"><img class="redes" src="images/facebook.png" alt="Logo de Facebook"></a>
+    <p><a href="http://www.facebook.com"><img class="redes" src="images/facebook.png" alt="Logo de Facebook"></a>
     <a href="http://www.twitter.com"><img class="redes" src="images/twitter.png" alt="Logo de Twitter"></a>
-    <a href="http://web.whatsapp.com/"><img class="redes" src="images/whatsapp.png" alt="Logo de Whatsapp"></a>
+    <a href="http://web.whatsapp.com/"><img class="redes" src="images/whatsapp.png" alt="Logo de Whatsapp"></a></p>
+    
   </footer>
 </body>
 

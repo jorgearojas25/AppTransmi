@@ -4,15 +4,18 @@
     line-height: 25px;
     letter-spacing: 1px;
     font-family: 'Rubik', sans-serif;
-    font-size: 20px;
+    font-size: 16px;
 }
+
 
 h1 {
     font-size: 25px;
+    
 }
 
 h2 {
     font-size: 22px;
+    font-weight: normal;
 }
 
 header, section, footer, aside, nav, article, figure, figcaption, hgroup, #agruparTabla {
@@ -30,7 +33,6 @@ header, section, footer, aside, nav, article, figure, figcaption, hgroup, #agrup
     border: 1px solid #999999;
     padding: 20px;
 }
-
 .logo {
     width: 30%;
     height: 30%;
@@ -45,6 +47,7 @@ header, section, footer, aside, nav, article, figure, figcaption, hgroup, #agrup
     display: inline-block;
     list-style: none;
     padding: 5px;
+    margin-left: 30px;
 }
 
 #seccion {
@@ -114,7 +117,7 @@ article {
 }
 
 time {
-    color: #999999;
+    color: red;
 }
 
 figcaption {
